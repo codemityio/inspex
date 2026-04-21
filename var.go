@@ -2,7 +2,7 @@
 package main
 
 var (
-	name        = "gotpl"
+	name        = "inspex"
 	version     = ""
 	copyright   = "codemityio"
 	authorName  = "codemityio"

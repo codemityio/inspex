@@ -7,18 +7,47 @@ digraph DepGraph {
     node [shape="tab", fontname="Courier New", style="filled", fixedsize=false]
     edge [fontname="Courier New", color="grey66", arrowhead="normal", arrowtail="none", arrowsize="0.6", weight="0.5"]
     subgraph deps {
-        "github.com/codemityio/gotpl" [label="github.com/codemityio/gotpl", color="gray58", fillcolor="gray99", penwidth=1]
-              "github.com/codemityio/gotpl" -> "github.com/codemityio/gotpl/internal/app"
-              "github.com/codemityio/gotpl" -> "github.com/urfave/cli/v2"
-        "github.com/codemityio/gotpl/internal/app" [label="github.com/codemityio/gotpl/app", color="gray58", fillcolor="gray99", penwidth=1]
-              "github.com/codemityio/gotpl/internal/app" -> "github.com/urfave/cli/v2"
+        "github.com/codemityio/go/pkg/validator" [label="github.com/codemityio/go/pkg/validator", color="gray69", fillcolor="gray99", penwidth=1]
+              "github.com/codemityio/go/pkg/validator" -> "github.com/xeipuuv/gojsonschema"
+              "github.com/codemityio/go/pkg/validator" -> "gopkg.in/yaml.v3"
+        "github.com/codemityio/inspex" [label="github.com/codemityio/inspex", color="gray58", fillcolor="gray99", penwidth=1]
+              "github.com/codemityio/inspex" -> "github.com/codemityio/inspex/cmd/fs"
+              "github.com/codemityio/inspex" -> "github.com/codemityio/inspex/cmd/glv"
+              "github.com/codemityio/inspex" -> "github.com/codemityio/inspex/internal/app"
+              "github.com/codemityio/inspex" -> "github.com/urfave/cli/v2"
+        "github.com/codemityio/inspex/cmd/fs" [label="github.com/codemityio/inspex/cmd/fs", color="gray58", fillcolor="gray99", penwidth=1]
+              "github.com/codemityio/inspex/cmd/fs" -> "github.com/codemityio/go/pkg/validator"
+              "github.com/codemityio/inspex/cmd/fs" -> "github.com/codemityio/inspex/internal/browser"
+              "github.com/codemityio/inspex/cmd/fs" -> "github.com/codemityio/inspex/internal/http"
+              "github.com/codemityio/inspex/cmd/fs" -> "github.com/codemityio/inspex/internal/io"
+              "github.com/codemityio/inspex/cmd/fs" -> "github.com/urfave/cli/v2"
+              "github.com/codemityio/inspex/cmd/fs" -> "golang.org/x/sys/unix"
+        "github.com/codemityio/inspex/cmd/glv" [label="github.com/codemityio/inspex/cmd/glv", color="gray58", fillcolor="gray99", penwidth=1]
+              "github.com/codemityio/inspex/cmd/glv" -> "github.com/codemityio/go/pkg/validator"
+              "github.com/codemityio/inspex/cmd/glv" -> "github.com/codemityio/inspex/internal/app"
+              "github.com/codemityio/inspex/cmd/glv" -> "github.com/codemityio/inspex/internal/browser"
+              "github.com/codemityio/inspex/cmd/glv" -> "github.com/codemityio/inspex/internal/http"
+              "github.com/codemityio/inspex/cmd/glv" -> "github.com/codemityio/inspex/internal/io"
+              "github.com/codemityio/inspex/cmd/glv" -> "github.com/urfave/cli/v2"
+        "github.com/codemityio/inspex/internal/app" [label="github.com/codemityio/inspex/app", color="gray58", fillcolor="gray99", penwidth=1]
+              "github.com/codemityio/inspex/internal/app" -> "github.com/urfave/cli/v2"
+        "github.com/codemityio/inspex/internal/browser" [label="github.com/codemityio/inspex/browser", color="gray58", fillcolor="gray99", penwidth=1]
+        "github.com/codemityio/inspex/internal/http" [label="github.com/codemityio/inspex/http", color="gray58", fillcolor="gray99", penwidth=1]
+        "github.com/codemityio/inspex/internal/io" [label="github.com/codemityio/inspex/io", color="gray58", fillcolor="gray99", penwidth=1]
         "github.com/cpuguy83/go-md2man/v2/md2man" [label="github.com/cpuguy83/go-md2man/v2/md2man", color="gray65", fillcolor="gray83", penwidth=1]
               "github.com/cpuguy83/go-md2man/v2/md2man" -> "github.com/russross/blackfriday/v2"
         "github.com/russross/blackfriday/v2" [label="github.com/russross/blackfriday/v2", color="gray65", fillcolor="gray83", penwidth=1]
         "github.com/urfave/cli/v2" [label="github.com/urfave/cli/v2", color="gray65", fillcolor="gray83", penwidth=1]
               "github.com/urfave/cli/v2" -> "github.com/cpuguy83/go-md2man/v2/md2man"
               "github.com/urfave/cli/v2" -> "github.com/xrash/smetrics"
+        "github.com/xeipuuv/gojsonpointer" [label="github.com/xeipuuv/gojsonpointer", color="gray65", fillcolor="gray83", penwidth=1]
+        "github.com/xeipuuv/gojsonreference" [label="github.com/xeipuuv/gojsonreference", color="gray65", fillcolor="gray83", penwidth=1]
+              "github.com/xeipuuv/gojsonreference" -> "github.com/xeipuuv/gojsonpointer"
+        "github.com/xeipuuv/gojsonschema" [label="github.com/xeipuuv/gojsonschema", color="gray65", fillcolor="gray83", penwidth=1]
+              "github.com/xeipuuv/gojsonschema" -> "github.com/xeipuuv/gojsonreference"
         "github.com/xrash/smetrics" [label="github.com/xrash/smetrics", color="gray65", fillcolor="gray83", penwidth=1]
+        "golang.org/x/sys/unix" [label="golang.org/x/sys/unix", color="gray65", fillcolor="gray83", penwidth=1]
+        "gopkg.in/yaml.v3" [label="gopkg.in/yaml.v3", color="gray65", fillcolor="gray83", penwidth=1]
     }
 }
 

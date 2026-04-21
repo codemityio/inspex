@@ -10,7 +10,6 @@ if [ "${DEBUG}" = "true" ]; then
 fi
 
 mkdir -p tmp var
-touch .env.local
 
 case "$1" in
 
@@ -33,33 +32,8 @@ case "$1" in
     codemityio/golang-dev:latest sh -c "${COMMAND}"
   ;;
 
-"run")
-  case "$2" in
-
-  "go")
-    set -a
-    source .env
-    source .env.local
-    set +a
-    go run . ${FLAGS} ${COMMAND}
-    ;;
-
-  "container")
-    docker run --rm --env-file=.env --env-file=.env.local "${IMAGE_NAME}:latest" ${FLAGS} ${COMMAND}
-    ;;
-
-  *)
-    echo "error: incorrect '$2' subcommand..."
-    ;;
-
-  esac
-  ;;
-
 "exec")
-  set -a
-  source .env
-  source .env.local
-  set +a
+
   bin/app ${FLAGS} ${COMMAND}
   ;;
 
@@ -139,6 +113,12 @@ EOF
 "diff")
   (git diff --quiet && git diff --cached --quiet && [ -z "$(git ls-files --others --exclude-standard)" ]) || {
     echo "error: changes detected..."
+    echo "---- Unstaged changes ----"
+    git diff
+    echo "---- Staged changes ----"
+    git diff --cached
+    echo "---- Untracked files ----"
+    git ls-files --others --exclude-standard
     exit 1
   }
   ;;
@@ -169,7 +149,7 @@ EOF
   go generate -skip=mockgen -v ./...
   go build -ldflags "\
 -X 'main.name=${BASE_NAME}' \
--X 'main.version=${VERSION}' \
+-X 'main.version=${VERSION:-unknown}' \
 -X 'main.copyright=${VENDOR}' \
 -X 'main.authorName=${VENDOR}' \
 -X 'main.buildTime=$(date -u +"%Y-%m-%dT%H:%M:%SZ")'\
@@ -179,7 +159,7 @@ EOF
 "install")
   go install -ldflags "\
 -X 'main.name=${BASE_NAME}' \
--X 'main.version=${VERSION}' \
+-X 'main.version=${VERSION:-unknown}' \
 -X 'main.copyright=${VENDOR}' \
 -X 'main.authorName=${VENDOR}' \
 -X 'main.buildTime=$(date -u +"%Y-%m-%dT%H:%M:%SZ")'\
