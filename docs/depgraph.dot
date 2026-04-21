@@ -1,0 +1,24 @@
+digraph DepGraph {
+    fontname="Courier New"
+    splines="ortho"
+    nodesep="1.4"
+    ranksep="0.8"
+    graph [rankdir="TB", pad="0.2"]
+    node [shape="tab", fontname="Courier New", style="filled", fixedsize=false]
+    edge [fontname="Courier New", color="grey66", arrowhead="normal", arrowtail="none", arrowsize="0.6", weight="0.5"]
+    subgraph deps {
+        "github.com/codemityio/gotpl" [label="github.com/codemityio/gotpl", color="gray58", fillcolor="gray99", penwidth=1]
+              "github.com/codemityio/gotpl" -> "github.com/codemityio/gotpl/internal/app"
+              "github.com/codemityio/gotpl" -> "github.com/urfave/cli/v2"
+        "github.com/codemityio/gotpl/internal/app" [label="github.com/codemityio/gotpl/app", color="gray58", fillcolor="gray99", penwidth=1]
+              "github.com/codemityio/gotpl/internal/app" -> "github.com/urfave/cli/v2"
+        "github.com/cpuguy83/go-md2man/v2/md2man" [label="github.com/cpuguy83/go-md2man/v2/md2man", color="gray65", fillcolor="gray83", penwidth=1]
+              "github.com/cpuguy83/go-md2man/v2/md2man" -> "github.com/russross/blackfriday/v2"
+        "github.com/russross/blackfriday/v2" [label="github.com/russross/blackfriday/v2", color="gray65", fillcolor="gray83", penwidth=1]
+        "github.com/urfave/cli/v2" [label="github.com/urfave/cli/v2", color="gray65", fillcolor="gray83", penwidth=1]
+              "github.com/urfave/cli/v2" -> "github.com/cpuguy83/go-md2man/v2/md2man"
+              "github.com/urfave/cli/v2" -> "github.com/xrash/smetrics"
+        "github.com/xrash/smetrics" [label="github.com/xrash/smetrics", color="gray65", fillcolor="gray83", penwidth=1]
+    }
+}
+

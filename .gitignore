@@ -1,0 +1,11 @@
+.DS_Store
+.idea
+.env.*
+*.so
+*_mock_test.go
+/Makefile.env.*
+/bin
+/build
+/tmp
+/var
+/vendor

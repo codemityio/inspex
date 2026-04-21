@@ -1,0 +1,223 @@
+version: "2"
+
+run:
+  concurrency: 4
+  timeout: 5m
+  issues-exit-code: 2
+  tests: true
+  modules-download-mode: readonly
+  allow-parallel-runners: true
+  go: '1.26'
+
+linters:
+  default: none
+  enable:
+    - arangolint
+    - asasalint
+    - asciicheck
+    - bidichk
+    - bodyclose
+    - canonicalheader
+    - containedctx
+    - contextcheck
+    - copyloopvar
+    - cyclop
+    - decorder
+    - depguard
+    - dogsled
+    - dupl
+    - dupword
+    - durationcheck
+    - embeddedstructfieldcheck
+    - err113
+    - errcheck
+    - errchkjson
+    - errname
+    - errorlint
+    - exhaustive
+    - exhaustruct
+    - exptostd
+    - fatcontext
+    - forbidigo
+    - forcetypeassert
+    - funcorder
+    - funlen
+    - ginkgolinter
+    - gocheckcompilerdirectives
+    - gochecknoglobals
+    - gochecknoinits
+    - gochecksumtype
+    - gocognit
+    - goconst
+    - gocritic
+    - gocyclo
+    - godoclint
+    - godot
+    - godox
+    - goheader
+    - gomoddirectives
+    - gomodguard
+    - goprintffuncname
+    - gosec
+    - gosmopolitan
+    - govet
+    - grouper
+    - iface
+    - importas
+    - inamedparam
+    - ineffassign
+    - interfacebloat
+    - intrange
+    - iotamixing
+    - ireturn
+    - lll
+    - loggercheck
+    - maintidx
+    - makezero
+    - mirror
+    - misspell
+    - mnd
+    - modernize
+    - musttag
+    - nakedret
+    - nestif
+    - nilerr
+    - nilnesserr
+    - nilnil
+    - nlreturn
+    - noctx
+    - nolintlint
+    - nonamedreturns
+    - nosprintfhostport
+    - paralleltest
+    - perfsprint
+    - prealloc
+    - predeclared
+    - promlinter
+    - protogetter
+    - reassign
+    - recvcheck
+    - revive
+    - rowserrcheck
+    - sloglint
+    - spancheck
+    - sqlclosecheck
+    - staticcheck
+    - tagalign
+    - tagliatelle
+    - testableexamples
+    - testifylint
+    - testpackage
+    - thelper
+    - tparallel
+    - unconvert
+    - unparam
+    - unqueryvet
+    - unused
+    - usestdlibvars
+    - usetesting
+    - varnamelen
+    - wastedassign
+    - whitespace
+    - wrapcheck
+    - wsl_v5
+    - zerologlint
+
+  settings:
+    dupl:
+      threshold: 100
+    funlen:
+      lines: 110
+      statements: 50
+    goconst:
+      min-len: 2
+      min-occurrences: 3
+    cyclop:
+      max-complexity: 15
+    gocyclo:
+      min-complexity: 15
+    lll:
+      line-length: 140
+    misspell:
+      locale: UK
+    nolintlint:
+      allow-unused: false # Report any unused nolint directives
+      require-explanation: false # Don't require an explanation for nolint directives
+    depguard:
+      rules:
+        main:
+          # Used to determine the package matching priority.
+          # There are three different modes: `original`, `strict`, and `lax`.
+          # Default: "original"
+          list-mode: lax
+          # List of file globs that will match this list of settings to compare against.
+          # Default: $all
+          #files:
+          #  - "!**/*_a _file.go"
+          # List of allowed packages.
+          allow:
+            - $gostd
+            - github.com/urfave/cli/v2
+          # Packages that are not allowed where the value is a suggestion.
+          deny:
+            - pkg: "github.com/sirupsen/logrus"
+              desc: not allowed
+            - pkg: "github.com/pkg/errors"
+              desc: Should be replaced by standard lib errors package
+    tagliatelle:
+      case:
+        use-field-name: true
+        rules:
+          # Any struct tag type can be used.
+          # Support string case: `camel`, `pascal`, `kebab`, `snake`, `upperSnake`, `goCamel`, `goPascal`, `goKebab`, `goSnake`, `upper`, `lower`, `header`.
+          json: camel
+          yaml: camel
+          xml: camel
+          toml: camel
+          bson: camel
+          avro: snake
+          mapstructure: kebab
+          env: upperSnake
+          envconfig: upperSnake
+    varnamelen:
+      max-distance: 10
+      min-name-length: 2
+    revive:
+      rules:
+        - name: package-comments
+          disabled: true
+    nakedret:
+      max-func-lines: 40
+  exclusions:
+    rules:
+      - linters:
+          - exhaustruct
+          - funlen
+          - dupl
+          - gochecknoglobals
+          - gocognit
+          - gocyclo
+          - cyclop
+          - maintidx
+          - wrapcheck
+          - ireturn
+          - testpackage
+          - paralleltest
+          - tparallel
+          - musttag
+          - err113
+          - gosec
+        path: "_test\\.go"
+    paths:
+      - tmp
+      - var
+      - bin
+
+formatters:
+  enable:
+    - gci
+    - gofmt
+    - gofumpt
+    - goimports
+    - golines
+    - swaggo
