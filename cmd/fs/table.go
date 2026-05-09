@@ -397,7 +397,7 @@ func heatColor(temp float64) template.CSS {
 
 func fieldType(field string) string {
 	switch field {
-	case "size", "lines":
+	case mapSize, mapLines:
 		return "number"
 	default:
 		return "string"
@@ -425,17 +425,17 @@ func renderCell(field string, raw json.RawMessage) cell {
 	var class string
 
 	switch field {
-	case "size", "lines":
+	case mapSize, mapLines:
 		class = "col-num"
-	case "createdAt", "modifiedAt", "accessedAt", "changedAt":
+	case mapCreatedAt, mapModifiedAt, mapAccessedAt, mapChangedAt:
 		class = "col-date"
 
 		if len(display) == rfc3339Len {
 			display = display[:19]
 		}
-	case "mode":
+	case mapMode:
 		class = "col-mode"
-	case "isDir", "isLink":
+	case mapIsDir, mapIsLink:
 		class = "col-bool"
 	}
 

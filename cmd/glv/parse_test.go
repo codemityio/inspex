@@ -44,7 +44,8 @@ func addCommit(t *testing.T, dir, filename, content, message, isoDate string) st
 	cmd := exec.CommandContext(context.TODO(), "git", "commit", "-m", message, "--date="+isoDate)
 	cmd.Dir = dir
 
-	cmd.Env = append(os.Environ(),
+	cmd.Env = append(
+		os.Environ(),
 		"GIT_AUTHOR_DATE="+isoDate,
 		"GIT_COMMITTER_DATE="+isoDate,
 		"GIT_AUTHOR_NAME=Test User",
@@ -990,7 +991,8 @@ func TestParse(t *testing.T) {
 				cmd := exec.CommandContext(context.TODO(), "git", "commit", "-m", "two files")
 				cmd.Dir = dir
 
-				cmd.Env = append(os.Environ(),
+				cmd.Env = append(
+					os.Environ(),
 					"GIT_AUTHOR_NAME=Test User", "GIT_AUTHOR_EMAIL=test@example.com",
 					"GIT_COMMITTER_NAME=Test User", "GIT_COMMITTER_EMAIL=test@example.com",
 				)

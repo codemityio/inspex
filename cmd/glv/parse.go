@@ -71,7 +71,8 @@ func startGitLog(ctx context.Context, repoPath string) (io.ReadCloser, *exec.Cmd
 		args = append(args, "-C", repoPath)
 	}
 
-	args = append(args,
+	args = append(
+		args,
 		"log",
 		"--pretty=format:COMMIT:%h|%ad|%an|%s",
 		"--date=format:%Y-%m-%dT%H:%M:%S",
