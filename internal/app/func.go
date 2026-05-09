@@ -1,6 +1,8 @@
 package app
 
 import (
+	"fmt"
+	"os/exec"
 	"runtime/debug"
 	"time"
 
@@ -40,6 +42,18 @@ func WithValues(
 
 		app.Compiled = parsedBuildTime
 	}
+}
+
+func CheckCommand(ctx *cli.Context, cmd string, message string) error {
+	if _, e := exec.LookPath(cmd); e != nil {
+		if _, ee := fmt.Fprintln(ctx.App.Writer, message); ee != nil {
+			return fmt.Errorf("%w: %w", errWrite, ee)
+		}
+
+		return fmt.Errorf("%w: %w", errWrite, e)
+	}
+
+	return nil
 }
 
 func resolveVersion(fallback string, bi *debug.BuildInfo) string {

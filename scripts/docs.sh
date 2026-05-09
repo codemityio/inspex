@@ -164,7 +164,7 @@ case "$1" in
   # command
   notatio coi --command="${BASE_NAME} --help" --document-path=README.md --header=Manual --limiter-left=### --limiter-right="### " --index=1
   # deps
-  goforma code dep \
+  GOOS=linux goforma code dep \
     --path "./..." \
     --workdir "${PWD}" \
     --exclude-standard \

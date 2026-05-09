@@ -1,0 +1,57 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "accessedAt": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "changedAt": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "createdAt": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "file": {
+        "type": "string"
+      },
+      "isDir": {
+        "type": "boolean"
+      },
+      "isLink": {
+        "type": "boolean"
+      },
+      "lines": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "mode": {
+        "type": "string"
+      },
+      "modifiedAt": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "size": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "required": [
+      "accessedAt",
+      "changedAt",
+      "createdAt",
+      "file",
+      "isDir",
+      "isLink",
+      "lines",
+      "mode",
+      "modifiedAt",
+      "size"
+    ],
+    "additionalProperties": false
+  }
+}

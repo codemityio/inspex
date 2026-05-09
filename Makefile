@@ -31,12 +31,6 @@ prep: ## Prepare dev tools
 cmd: ## Run a command passed as COMMAND= value (e.g. make cmd COMMAND="make check")
 	@scripts/tools.sh cmd
 
-run-go: ## Run go (use FLAGS= and COMMAND= environment variables to pass main command flags and subcommand with flags when needed)
-	@scripts/tools.sh run go
-
-run-container: ## Run container (use FLAGS= and COMMAND= environment variables to pass main command flags and subcommand with flags when needed)
-	@scripts/tools.sh run container
-
 exec: ## Execute built bin (use FLAGS= and COMMAND= environment variables to pass main command flags and subcommand with flags when needed)
 	@scripts/tools.sh exec
 
