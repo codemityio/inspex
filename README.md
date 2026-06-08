@@ -99,7 +99,7 @@ Use the arrow keys `↓ ↑ → ←` to navigate the options, and press `/` to t
 | github.com/xeipuuv/gojsonreference      | https://github.com/xeipuuv/gojsonreference/blob/bd5ef7bd5415/LICENSE-APACHE-2.0.txt | Apache-2.0   |
 | github.com/xeipuuv/gojsonschema         | https://github.com/xeipuuv/gojsonschema/blob/v1.2.0/LICENSE-APACHE-2.0.txt          | Apache-2.0   |
 | github.com/xrash/smetrics               | https://github.com/xrash/smetrics/blob/686a1a2994c1/LICENSE                         | MIT          |
-| golang.org/x/sys/unix                   | https://cs.opensource.google/go/x/sys/+/v0.45.0:LICENSE                             | BSD-3-Clause |
+| golang.org/x/sys/unix                   | https://cs.opensource.google/go/x/sys/+/v0.46.0:LICENSE                             | BSD-3-Clause |
 | gopkg.in/yaml.v3                        | https://github.com/go-yaml/yaml/blob/v3.0.1/LICENSE                                 | MIT          |
 
 ## License
