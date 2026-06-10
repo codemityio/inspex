@@ -40,9 +40,9 @@ func scan(ctx *cli.Context) error {
 	}
 
 	switch outputFormat {
-	case "json":
+	case formatJSON:
 		return printJSON(files, skipFields)
-	case "csv":
+	case formatCSV:
 		return printCSV(files, skipFields)
 	default:
 		return fmt.Errorf("%w: unsupported %s", errOutputFormat, outputFormat)
@@ -194,16 +194,16 @@ func buildInfo(path, basePath, pth string, dir fs.DirEntry) (*Info, error) {
 // infoToMap converts an Info struct into an ordered map keyed by JSON field names.
 func infoToMap(info *Info) map[string]any {
 	return map[string]any{
-		"file":       info.File,
-		"createdAt":  info.CreatedAt,
-		"modifiedAt": info.ModifiedAt,
-		"accessedAt": info.AccessedAt,
-		"changedAt":  info.ChangedAt,
-		"size":       info.Size,
-		"lines":      info.Lines,
-		"mode":       info.Mode,
-		"isLink":     info.IsLink,
-		"isDir":      info.IsDir,
+		mapFile:       info.File,
+		mapCreatedAt:  info.CreatedAt,
+		mapModifiedAt: info.ModifiedAt,
+		mapAccessedAt: info.AccessedAt,
+		mapChangedAt:  info.ChangedAt,
+		mapSize:       info.Size,
+		mapLines:      info.Lines,
+		mapMode:       info.Mode,
+		mapIsLink:     info.IsLink,
+		mapIsDir:      info.IsDir,
 	}
 }
 
