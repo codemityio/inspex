@@ -24,7 +24,7 @@ func Serve(ctx context.Context, handler http.HandlerFunc, port int, open Opener)
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", handler)
 
-	//nolint:exhaustruct
+	//nolint:exhaustruct_v5
 	srv := &http.Server{
 		Addr:              addr,
 		Handler:           mux,

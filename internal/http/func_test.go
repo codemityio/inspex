@@ -22,9 +22,10 @@ const (
 // noopOpen is an Opener that does nothing — no browser, no side effects.
 var noopOpen Opener = func(_ context.Context, _ string) {}
 
-// recordingOpen captures the URL passed to it for assertion.
-func recordingOpen(got *string) Opener {
-	return func(_ context.Context, url string) { *got = url }
+// recordingOpen captures the URL passed to it, signalling via ch when called
+// so the caller can synchronise with the goroutine running Serve.
+func recordingOpen(ch chan<- string) Opener {
+	return func(_ context.Context, url string) { ch <- url }
 }
 
 // freePort returns an available TCP port on localhost.
@@ -136,9 +137,14 @@ func TestServe(t *testing.T) {
 
 			open := tc.open
 
-			var gotURL string
+			var (
+				gotURL  string
+				openedC chan string
+			)
+
 			if tc.wantOpenURL != "" {
-				open = recordingOpen(&gotURL)
+				openedC = make(chan string, 1)
+				open = recordingOpen(openedC)
 			}
 
 			// Error-path: Serve must return without needing shutdown.
@@ -165,6 +171,14 @@ func TestServe(t *testing.T) {
 				}()
 
 				assert.Equal(t, tc.wantStatus, resp.StatusCode)
+			}
+
+			if tc.wantOpenURL != "" {
+				select {
+				case gotURL = <-openedC:
+				case <-time.After(testTimeout):
+					t.Fatal("timed out waiting for open to be called")
+				}
 			}
 
 			assert.Equal(t, tc.wantOpenURL, gotURL)

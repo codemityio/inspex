@@ -687,6 +687,8 @@ func TestParseShowConfig(t *testing.T) {
 			)
 
 			app := &cli.App{
+				HideHelp:    true,
+				HideVersion: true,
 				Flags: []cli.Flag{
 					&cli.StringFlag{Name: "input-path"},
 					&cli.BoolFlag{Name: "http"},
