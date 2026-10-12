@@ -7,7 +7,7 @@ digraph DepGraph {
     node [shape="tab", fontname="Courier New", style="filled", fixedsize=false]
     edge [fontname="Courier New", color="grey66", arrowhead="normal", arrowtail="none", arrowsize="0.6", weight="0.5"]
     subgraph deps {
-        "github.com/codemityio/go/pkg/validator" [label="github.com/codemityio/go/pkg/validator", color="gray69", fillcolor="gray99", penwidth=1]
+        "github.com/codemityio/go/pkg/validator" [label="github.com/codemityio/go/pkg/validator@v0.0.10", color="gray69", fillcolor="gray99", penwidth=1]
               "github.com/codemityio/go/pkg/validator" -> "github.com/xeipuuv/gojsonschema"
               "github.com/codemityio/go/pkg/validator" -> "gopkg.in/yaml.v3"
         "github.com/codemityio/inspex" [label="github.com/codemityio/inspex", color="gray58", fillcolor="gray99", penwidth=1]
@@ -34,20 +34,20 @@ digraph DepGraph {
         "github.com/codemityio/inspex/internal/browser" [label="github.com/codemityio/inspex/browser", color="gray58", fillcolor="gray99", penwidth=1]
         "github.com/codemityio/inspex/internal/http" [label="github.com/codemityio/inspex/http", color="gray58", fillcolor="gray99", penwidth=1]
         "github.com/codemityio/inspex/internal/io" [label="github.com/codemityio/inspex/io", color="gray58", fillcolor="gray99", penwidth=1]
-        "github.com/cpuguy83/go-md2man/v2/md2man" [label="github.com/cpuguy83/go-md2man/v2/md2man", color="gray65", fillcolor="gray83", penwidth=1]
+        "github.com/cpuguy83/go-md2man/v2/md2man" [label="github.com/cpuguy83/go-md2man/v2/md2man@v2.0.7", color="gray65", fillcolor="gray83", penwidth=1]
               "github.com/cpuguy83/go-md2man/v2/md2man" -> "github.com/russross/blackfriday/v2"
-        "github.com/russross/blackfriday/v2" [label="github.com/russross/blackfriday/v2", color="gray65", fillcolor="gray83", penwidth=1]
-        "github.com/urfave/cli/v2" [label="github.com/urfave/cli/v2", color="gray65", fillcolor="gray83", penwidth=1]
+        "github.com/russross/blackfriday/v2" [label="github.com/russross/blackfriday/v2@v2.1.0", color="gray65", fillcolor="gray83", penwidth=1]
+        "github.com/urfave/cli/v2" [label="github.com/urfave/cli/v2@v2.27.7", color="gray65", fillcolor="gray83", penwidth=1]
               "github.com/urfave/cli/v2" -> "github.com/cpuguy83/go-md2man/v2/md2man"
               "github.com/urfave/cli/v2" -> "github.com/xrash/smetrics"
-        "github.com/xeipuuv/gojsonpointer" [label="github.com/xeipuuv/gojsonpointer", color="gray65", fillcolor="gray83", penwidth=1]
-        "github.com/xeipuuv/gojsonreference" [label="github.com/xeipuuv/gojsonreference", color="gray65", fillcolor="gray83", penwidth=1]
+        "github.com/xeipuuv/gojsonpointer" [label="github.com/xeipuuv/gojsonpointer@v0.0.0-20180127040702-4e3ac2762d5f", color="gray65", fillcolor="gray83", penwidth=1]
+        "github.com/xeipuuv/gojsonreference" [label="github.com/xeipuuv/gojsonreference@v0.0.0-20180127040603-bd5ef7bd5415", color="gray65", fillcolor="gray83", penwidth=1]
               "github.com/xeipuuv/gojsonreference" -> "github.com/xeipuuv/gojsonpointer"
-        "github.com/xeipuuv/gojsonschema" [label="github.com/xeipuuv/gojsonschema", color="gray65", fillcolor="gray83", penwidth=1]
+        "github.com/xeipuuv/gojsonschema" [label="github.com/xeipuuv/gojsonschema@v1.2.0", color="gray65", fillcolor="gray83", penwidth=1]
               "github.com/xeipuuv/gojsonschema" -> "github.com/xeipuuv/gojsonreference"
-        "github.com/xrash/smetrics" [label="github.com/xrash/smetrics", color="gray65", fillcolor="gray83", penwidth=1]
-        "golang.org/x/sys/unix" [label="golang.org/x/sys/unix", color="gray65", fillcolor="gray83", penwidth=1]
-        "gopkg.in/yaml.v3" [label="gopkg.in/yaml.v3", color="gray65", fillcolor="gray83", penwidth=1]
+        "github.com/xrash/smetrics" [label="github.com/xrash/smetrics@v0.0.0-20240521201337-686a1a2994c1", color="gray65", fillcolor="gray83", penwidth=1]
+        "golang.org/x/sys/unix" [label="golang.org/x/sys/unix@v0.49.0", color="gray65", fillcolor="gray83", penwidth=1]
+        "gopkg.in/yaml.v3" [label="gopkg.in/yaml.v3@v3.0.1", color="gray65", fillcolor="gray83", penwidth=1]
     }
 }
 
