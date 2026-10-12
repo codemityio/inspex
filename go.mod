@@ -1,12 +1,12 @@
 module github.com/codemityio/inspex
 
-go 1.27.0
+go 1.27.2
 
 require (
-	github.com/codemityio/go v0.0.9
+	github.com/codemityio/go v0.0.10
 	github.com/stretchr/testify v1.12.1
 	github.com/urfave/cli/v2 v2.27.7
-	golang.org/x/sys v0.47.0
+	golang.org/x/sys v0.49.0
 )
 
 require (
